@@ -15,8 +15,9 @@ It also support visualize pressure data and record sensors data.
 
 ## Modifications that were made 
 
-
-
+- A few changes and additions have been made to the application interface.
+- We provide a form for each user to provide their unique identification number.
+- We incorporate the system with a server, which sends the data of each user in real-time.
   
 ## Requirements
   
