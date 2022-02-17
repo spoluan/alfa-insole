@@ -12,6 +12,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -43,8 +45,10 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import java.io.IOException;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Vector;
 
@@ -56,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private final int SHOW_LONG = Toast.LENGTH_LONG;
 
     private Button connectionButton = null;
-    private Button recordingButton = null;
+    public static Button recordingButton = null;
 
     private Handler handler = null;
     private Context context = this;
@@ -74,8 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ConnectedFragment connectedViewFragment = null;
     private boolean isConnected = false;
     private boolean isScanning = false;
-    private boolean isRecording = false;
-    private boolean showTitleRow = true;
+    public static boolean isRecording = false;
     private byte interactiveDeviceType = 0;
     private SharedPreferences sharedPref = null;
     private SharedPreferences.Editor editor = null;
@@ -93,18 +96,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         initMainActivityViewComponents();
         initBleModule();
         checkPreferencesExisted();
+        loadPreferencesAutoScanSet();
+        ConnectedFragment.record = false;
     }
 
     @Override
     public void onBackPressed() {
         if(!isConnected)
             MainActivity.this.finish();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadPreferencesNeedTitleRowRecord();
     }
 
     @Override
@@ -206,24 +205,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(result == -1) {
             editor.putInt(getString(R.string.pref_scan_time), BleConnConfig.SCAN_TIME_S);
             editor.putInt(getString(R.string.pref_auto_scan), 0);
-            editor.putInt(getString(R.string.pref_title_row_needing), 1);
             editor.commit();
         }
     }
 
-    private void loadPreferencesSettings() {
+    private void loadPreferencesAutoScanSet() {
         int result = sharedPref.getInt(getString(R.string.pref_auto_scan), 0);
         if(result > 0)
             onRefresh();
-        loadPreferencesNeedTitleRowRecord();
-    }
-
-    private void loadPreferencesNeedTitleRowRecord() {
-        int result = sharedPref.getInt(getString(R.string.pref_title_row_needing), 1);
-        if(result == 0)
-            showTitleRow = false;
-        else
-            showTitleRow = true;
     }
 
     private void scanLeDevice(final boolean enable) {
@@ -334,6 +323,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     int[] pressureInt = null;
                     float[] accelerateFloat = null;
                     float[] gyroFloat = null;
+                    String currentDateTimeString = DateFormat.getTimeInstance().format(new Date());
                     if(devType == Alfaone.DEVICE_TYPE) {
                         pressureInt = Alfaone.parsePressure(pressure);
                         accelerateFloat = Alfaone.parseAccel(accelerate);
@@ -343,9 +333,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         accelerateFloat = NikePlus.parseAccel(accelerate);
                     }
 
-                    connectedViewFragment.updateSensorView(devType, (byte)0, pressureInt, accelerateFloat, gyroFloat);
+                    connectedViewFragment.updateSensorView(devType, (byte)0, pressureInt, accelerateFloat, gyroFloat, currentDateTimeString);
+                    /*
                     if(isRecording)
                         recordSensorData(devType, (byte)0, connCount, seq, pressureInt, accelerateFloat, gyroFloat);
+                    */
                 }
             });
         });
@@ -361,10 +353,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         connectionScope2.registDiscoveryProfileCompleteCallback(result -> {
             if (result == BleConnectionScope.RESULT_SUCCESS) {
                 makeToastMessageWithHandler(R.string.discoveried_2_insole_msg, SHOW_SHORT);
-            } else if (result == BleConnectionScope.RESULT_FAIL) {
-                destroyConnectionsScope();
-                handler.post(disconnectButtonTask);
-                makeToastMessageWithHandler(R.string.discoveried_2_insole_fail_msg, SHOW_SHORT);
             }
         });
         connectionScope2.registEnabledNotifyCompleteCallback(result -> {
@@ -388,6 +376,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     int[] pressureInt = null;
                     float[] accelFloat = null;
                     float[] gyroFloat = null;
+                    String currentDateTimeString = DateFormat.getTimeInstance().format(new Date());
                     if(devType == Alfaone.DEVICE_TYPE) {
                         pressureInt = Alfaone.parsePressure(pressure);
                         accelFloat = Alfaone.parseAccel(accelerate);
@@ -397,13 +386,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         accelFloat = NikePlus.parseAccel(accelerate);
                     }
 
-                    connectedViewFragment.updateSensorView(devType, (byte)1, pressureInt, accelFloat, gyroFloat);
-                    if(isRecording)
-                        recordSensorData(devType, (byte)1, connCount, seq, pressureInt, accelFloat, gyroFloat);
+                    connectedViewFragment.updateSensorView(devType, (byte)1, pressureInt, accelFloat, gyroFloat, currentDateTimeString);
+
+//                    if(isRecording)
+//                        recordSensorData(devType, (byte)1, connCount, seq, pressureInt, accelFloat, gyroFloat);
                 }
             });
         });
         connectionScope2.excute();
+    }
+
+    private void recordSensorData(byte devType, byte side, byte count, short seq, int[] pressure, float[] accelerate, float[] gyro) {
+        String out = null;
+        if(devType == Alfaone.DEVICE_TYPE){
+//            out = Alfaone.sensorDataToString(count, side, seq, pressure, accelerate, gyro);
+            out = Alfaone.getPressure(count, side, seq, pressure);
+//            Log.e("Error here", out + "; " + pressure[0]);
+        } else if(devType == NikePlus.DEVICE_TYPE)
+            out = NikePlus.sensorDataToString(count, side, seq, pressure, accelerate);
+//        if(out != null) {
+//            try {
+//                csw.insertDateRow(out);
+//            } catch(Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
     }
 
     private void connectSelectDevices() {
@@ -454,12 +461,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     };
 
-    private void stopRecording() {
+    public static void stopRecording() {
         recordingButton.setText(R.string.btn_start_recording);
         try {
+            ConnectedFragment.record = false;
             isRecording = false;
-            csw.killWriter();
-        } catch (IOException e) {
+            ConnectedFragment.duration = 20;
+            //csw.killWriter();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -483,33 +492,35 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (isRecording) {
                 stopRecording();
             } else {
+                ConnectedFragment.record = true;
                 recordingButton.setText(R.string.btn_stop_recording);
+                isRecording = true;
+
+                /*
                 Long tsLong = System.currentTimeMillis() / 1000;
                 String ts = tsLong.toString();
                 csw = FileUtils.CsvWriter.initWriter(ts, FileUtils.CsvWriter.DELETE_FILE_IF_EXIST);
 
-                if (showTitleRow) {
-                    String title = Alfaone.FIELD_TITLE_RAW;
-                    if (scanViewFragment.getSelectedDevicesCount() == 1) {
-                        if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
-                            title = Alfaone.FIELD_TITLE_RAW;
-                        else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
-                            title = NikePlus.FIELD_TITLE_RAW;
-                    } else {
-                        if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
-                            title = Alfaone.FIELD_TITLE_RAW.concat(",").concat(Alfaone.FIELD_TITLE_RAW);
-                        else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
-                            title = NikePlus.FIELD_TITLE_RAW.concat(",").concat(NikePlus.FIELD_TITLE_RAW);
-                    }
-
-                    try {
-                        csw.insertDateRow(title);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                String title = Alfaone.FIELD_TITLE_RAW;
+                if(scanViewFragment.getSelectedDevicesCount() == 1) {
+                    if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
+                        title = Alfaone.FIELD_TITLE_RAW;
+                    else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
+                        title = NikePlus.FIELD_TITLE_RAW;
+                } else {
+                    if (interactiveDeviceType == Alfaone.DEVICE_TYPE)
+                        title = Alfaone.FIELD_TITLE_RAW.concat(",").concat(Alfaone.FIELD_TITLE_RAW);
+                    else if (interactiveDeviceType == NikePlus.DEVICE_TYPE)
+                        title = NikePlus.FIELD_TITLE_RAW.concat(",").concat(NikePlus.FIELD_TITLE_RAW);
                 }
-                isRecording = true;
+
+                try {
+                    csw.insertDateRow(title);
+                    isRecording = true;
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                */
             }
         }
     };
@@ -605,22 +616,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             connectionScope2.destroy();
         connectionScope1 = null;
         connectionScope2 = null;
-    }
-
-    private void recordSensorData(byte devType, byte side, byte count, short seq, int[] pressure, float[] accelerate, float[] gyro) {
-        String out = null;
-        if(devType == Alfaone.DEVICE_TYPE)
-            out = Alfaone.sensorDataToString(count, side, seq, pressure, accelerate, gyro);
-        else if(devType == NikePlus.DEVICE_TYPE)
-            out = NikePlus.sensorDataToString(count, side, seq, pressure, accelerate);
-
-        if(out != null) {
-            try {
-                csw.insertDateRow(out);
-            } catch(Exception e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     private boolean isCorrectInsolePair(int count, String[] addresses) {

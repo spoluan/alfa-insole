@@ -6,12 +6,17 @@
   
   
 ## Description
-  
-- V1.0.0
-  
+   
 AlfaInsole is a mobile application which demonstrate how establish connection with insoles. 
 It also support visualize pressure data and record sensors data.
-  
+
+**Please note this is a modified version of Alfasole V1.0.0. The version has been modified to meet our needs. The original version can be found [here](https://github.com/AlfaLoop/alfainsole).**
+
+
+## Modifications that were made 
+
+
+
   
 ## Requirements
   
@@ -19,12 +24,7 @@ It also support visualize pressure data and record sensors data.
   
 - Android Studio 3.1.4(suggest, or Latest)
   
-- Insole harware [AlfaOne](https://app.alfaloop.com/store/) and [NikePlus](https://app.alfaloop.com/store/)
-  
-  
-## APK releases
-  
-- [V1.0.0](https://github.com/AlfaLoop/alfainsole/releases)
+- Insole harware [AlfaOne]() and [NikePlus]()
   
   
 ## Functions
@@ -38,27 +38,9 @@ It also support visualize pressure data and record sensors data.
 - Support both AlfaOne and Nike plus insole
   
   
-## Gatt profile details
-  
-[AlfaOne.Gatt](./document/Alfaone.gatt.md) and [NikePlus.Gatt](./document/NikePlus.gatt.md)
-  
-  
-## Screenshots
-  
-![](./asset/start_view.jpg)  
-Click center of the screen or pull down to scan near devices.  
-  
-![](./asset/scan_list.jpg)
-![](./asset/visualization.jpg)  
-![](./asset/navigater.jpg)
-![](./asset/setting.jpg)  
-![](./asset/rescan.jpg)  
-Pull down to rescan near devices.
-  
-  
 ## Thanks
-  
-[scwang90/SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
+ 
+[AlfaLoop](https://github.com/AlfaLoop)
   
   
 License

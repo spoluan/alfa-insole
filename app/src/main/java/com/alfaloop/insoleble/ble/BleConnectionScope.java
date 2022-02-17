@@ -17,7 +17,6 @@ public class BleConnectionScope implements BleConnectionEventLisener {
     public static final int RESULT_FAIL = 1;
 
     private Handler handler = null;
-    private int discoveyFailCount = 0;
 
     private String targetAddr = null;
     private CompleteCallback discoverProfileCompleteCallback = null;
@@ -44,7 +43,6 @@ public class BleConnectionScope implements BleConnectionEventLisener {
         switch (eventType) {
             case BleConnection.CONNECTION_CONNECTED:
                 Log.e(TAG, "Connected.");
-                discoveyFailCount = 0;
                 connection.discoveryService();
                 break;
             case BleConnection.CONNECTION_DISCONNECTED:
@@ -59,14 +57,8 @@ public class BleConnectionScope implements BleConnectionEventLisener {
                 break;
             case BleConnection.CONNECTION_DISCOVERIED_FAIL:
                 Log.e(TAG, "Service discovery failed.");
-                discoveyFailCount++;
-                if(discoveyFailCount >= 3) {
-                    if(discoverProfileCompleteCallback != null)
-                        discoverProfileCompleteCallback.onComplete(RESULT_FAIL);
-                } else {
-                    connection.bleConnectionSleepSlot(BleConnConfig.REDISCOVERY_DELAY_MS);
-                    connection.discoveryService();
-                }
+                connection.bleConnectionSleepSlot(BleConnConfig.REDISCOVERY_DELAY_MS);
+                connection.discoveryService();
                 break;
             case BleConnection.CONNECTION_NOTIFICATION_ENABLED:
                 Log.e(TAG, "Notifications enabled.");

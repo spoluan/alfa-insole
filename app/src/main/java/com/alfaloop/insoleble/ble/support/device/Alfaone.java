@@ -106,6 +106,70 @@ public class Alfaone {
         return cmd;
     }
 
+    public static String getPressure(byte count, byte side, short seq, int[] pressure) {
+        StringBuilder output = new StringBuilder();
+
+        if(count == 1) {
+            short sSeq = seq;
+            if(sSeq < 0)
+                sSeq += 256;
+            output.append(sSeq).append(",");
+
+            if(pressure != null) {
+                output.append(pressure[0]).append(",");
+                output.append(pressure[1]).append(",");
+                output.append(pressure[2]).append(",");
+                output.append(pressure[3]).append(",");
+            } else {
+                output.append("null,null,null,null,");
+            }
+
+            return output.toString();
+        } else {
+            if(lastSide == (byte)-1) {
+                lastSide = side;
+                tmpSeq = seq;
+                tmpPressure = pressure;
+
+                return null;
+            } else {
+                if(lastSide != side) {
+                    if(side == 1) {
+                        output.append(getPressure((byte) 1, (byte) 0, (short)tmpSeq, tmpPressure)).append(",");
+                        output.append(getPressure((byte) 1, (byte) 0, (short)seq, pressure));
+                    } else {
+                        output.append(getPressure((byte) 1, (byte) 0, (short)seq, pressure)).append(",");
+                        output.append(getPressure((byte) 1, (byte) 0, (short)tmpSeq, tmpPressure));
+                    }
+
+                    lastSide = (byte)-1;
+                    tmpSeq = 0;
+                    tmpPressure = null;
+
+                    if(isConflict) {
+                        lastSide = sideBk;
+                        tmpSeq = tmpSeqBk;
+                        tmpPressure = tmpPressureBk;
+                        sideBk = (byte)-1;
+                        tmpSeqBk = 0;
+                        tmpPressureBk = null;
+                        isConflict = false;
+                    }
+
+                    return output.toString();
+                } else {
+                    //Log.e(TAG, "Buffer conflict");
+                    isConflict = true;
+                    sideBk = side;
+                    tmpSeqBk = seq;
+                    tmpPressureBk = pressure;
+
+                    return null;
+                }
+            }
+        }
+    }
+
     public static String sensorDataToString(byte count, byte side, short seq, int[] pressure, float[] accel, float[] gyro) {
         StringBuilder output = new StringBuilder();
 
@@ -159,6 +223,7 @@ public class Alfaone {
                         output.append(sensorDataToString((byte) 1, (byte) 0, (short)seq, pressure, accel, gyro)).append(",");
                         output.append(sensorDataToString((byte) 1, (byte) 0, (short)tmpSeq, tmpPressure, tmpAccel, tmpGyro));
                     }
+
                     lastSide = (byte)-1;
                     tmpSeq = 0;
                     tmpPressure = null;

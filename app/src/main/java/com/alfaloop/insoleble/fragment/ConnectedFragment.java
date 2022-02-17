@@ -1,20 +1,43 @@
 package com.alfaloop.insoleble.fragment;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alfaloop.insoleble.MainActivity;
 import com.alfaloop.insoleble.R;
 import com.alfaloop.insoleble.visualization.FootPressureView;
 import com.alfaloop.insoleble.visualization.InsoleSensor;
 import com.alfaloop.insoleble.visualization.SensorDataGetter;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.text.DateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 public class ConnectedFragment extends Fragment {
     private static final String TAG = ConnectedFragment.class.getSimpleName();
@@ -27,10 +50,13 @@ public class ConnectedFragment extends Fragment {
     private TextView rDevNameView = null;
     private TextView rPressureView = null;
     private TextView rGyroView = null;
+    public static EditText etName = null;
     private String[] devicesName = null;
     private SensorDataGetter leftSensorDataGetter = null;
     private SensorDataGetter rightSensorDataGetter = null;
     private boolean switchSide = false;
+    public static boolean record = false;
+    private String getName = "";
 
     public static ConnectedFragment newInstance(String[] devicesName) {
         ConnectedFragment fragment = new ConnectedFragment();
@@ -60,6 +86,8 @@ public class ConnectedFragment extends Fragment {
         rDevNameView = (TextView)view.findViewById(R.id.c_right_device_name);
         rPressureView = (TextView)view.findViewById(R.id.c_right_pressure);
         rGyroView = (TextView)view.findViewById(R.id.c_right_gyro);
+        etName = (EditText) view.findViewById(R.id.etName);
+
 
         lDevNameView.setText(devicesName[0]);
         if(devicesName.length >1)
@@ -94,7 +122,15 @@ public class ConnectedFragment extends Fragment {
         this.handler = handler;
     }
 
-    public void updateSensorView(byte deviceType, byte side, int[] pressure, float[] accel, float[] gyro) {
+    public void updateSensorView(byte deviceType, byte side, int[] pressure, float[] accel, float[] gyro, String currentDateTimeString) {
+
+        //ConnectedFragment.etName.setEnabled(false); //Lock
+        if(MainActivity.recordingButton.getText().toString().equals("Record")) {
+            etName.setEnabled(true);
+        }else{
+            etName.setEnabled(false);
+        }
+
         String pressureStr = null;
         String gyroStr = null;
         float[] data = null;
@@ -127,6 +163,10 @@ public class ConnectedFragment extends Fragment {
                 lGyroView.setText(gyroStr);
             if(pressureStr != null)
                 lPressureView.setText(pressureStr);
+                if((pressure[0] != 0 || pressure[1] != 0 || pressure[2] != 0 || pressure[3] != 0) && record == true) {
+                    heroku(pressure, currentDateTimeString, "LEFT");
+//                    addErrorLogCat("LEFT", pressureStr + "; " + currentDateTimeString);
+                }
             if(data != null)
                 leftSensorDataGetter.addSensorData(data);
         } else if((!switchSide && side == 1) || (switchSide && side == 0)) {
@@ -134,9 +174,163 @@ public class ConnectedFragment extends Fragment {
                 rGyroView.setText(gyroStr);
             if(pressureStr != null)
                 rPressureView.setText(pressureStr);
+            if((pressure[0] != 0 || pressure[1] != 0 || pressure[2] != 0 || pressure[3] != 0) && record == true) {
+                addErrorLogCat("TIME NOW", currentDateTimeString);
+                heroku(pressure, currentDateTimeString, "RIGHT");
+//                addErrorLogCat("RIGHT", pressureStr + "; " + currentDateTimeString);
+            }
             if(data != null)
                 rightSensorDataGetter.addSensorData(data);
         }
+    }
+
+    private int R_HEEL = 0;
+    private int R_THUMB = 0;
+    private int R_INNER_BALL = 0;
+    private int R_OUTER_BALL = 0;
+
+    private int L_HEEL = 0;
+    private int L_THUMB = 0;
+    private int L_INNER_BALL = 0;
+    private int L_OUTER_BALL = 0;
+
+    private int status_r = 1;
+    private int status_l = 1;
+
+    private void heroku(int[] pressure, String time, String status){
+        ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        boolean isConnected = false;
+        if (networkInfo != null && (isConnected = networkInfo.isConnected())) {
+//            addErrorLogCat("DATA", status + "; " + time + "; " + pressure[0]);
+//            decideStanding(time, status, pressure[0], pressure[1], pressure[2], pressure[3]);
+
+            String split[] = time.split(" ")[0].toString().split(":");
+            String hours = split[0];
+            String minutes = split[1];
+            String seconds = split[2];
+            time = hours + ":" + minutes + ":" + seconds;
+
+            if(status.toUpperCase().equals("RIGHT")) {
+                R_HEEL = pressure[0];
+                R_THUMB = pressure[1];
+                R_INNER_BALL = pressure[2];
+                R_OUTER_BALL = pressure[3];
+                status_r = 0;
+                addErrorLogCat("TIME", time + " RIGHT");
+            }
+            if(status.toUpperCase().equals("LEFT")) {
+                L_HEEL = pressure[0];
+                L_THUMB = pressure[1];
+                L_INNER_BALL = pressure[2];
+                L_OUTER_BALL = pressure[3];
+                status_l = 0;
+            }
+
+            if(status_l == 0 && status_r == 0){
+                new Heroku(R_HEEL, R_THUMB, R_INNER_BALL, R_OUTER_BALL, L_HEEL, L_THUMB, L_INNER_BALL, L_OUTER_BALL, time);
+                status_r = 1;
+                status_l = 1;
+                addErrorLogCat("TIME", time + " LEFT");
+            }
+        }else{
+            showMessage("Check your internet connection.");
+            addErrorLogCat("Internet info", "No internet connection.");
+        }
+    }
+
+    public static int duration = 20;
+
+    int l_count = 0;
+    int r_count = 0;
+    List<String> tempSecond = new ArrayList<String>(); // thumb, outerBall, innerBall, heel
+    private void decideStanding(String time, String status, int thumb, int outer_ball, int inner_ball, int heel){
+//        addErrorLogCat("Datas", time + status + thumb + outer_ball);
+        //if(duration > 0){
+        String split[] = time.split(" ")[0].toString().split(":");
+        String hours = split[0];
+        String minutes = split[1];
+        String seconds = split[2];
+
+        if(Arrays.asList(tempSecond.toArray(new String[tempSecond.size()])).contains(seconds) || tempSecond.size() == 0){
+            tempSecond.add(seconds);
+
+            if(status.toUpperCase().equals("RIGHT")) {
+                R_HEEL += heel;
+                R_THUMB += thumb;
+                R_INNER_BALL += inner_ball;
+                R_OUTER_BALL += outer_ball;
+//                    addErrorLogCat("SEND", status + "; " + r_count + "; " + seconds + "; " + R_HEEL + " " + R_THUMB + " " + R_INNER_BALL + " " + R_OUTER_BALL);
+                r_count += 1;
+            }
+            if(status.toUpperCase().equals("LEFT")) {
+                L_HEEL += heel;
+                L_THUMB += thumb;
+                L_INNER_BALL += inner_ball;
+                L_OUTER_BALL += outer_ball;
+//                    addErrorLogCat("SEND", status + "; " + l_count + "; " + seconds + "; " + L_HEEL + " " + L_THUMB + " " + L_INNER_BALL + " " + L_OUTER_BALL);
+                l_count += 1;
+            }
+        }else{
+            try {
+                try {
+                    int l_total = (L_HEEL + L_THUMB + L_INNER_BALL + L_OUTER_BALL) / tempSecond.size();
+                    int r_total = (R_HEEL + R_THUMB + R_INNER_BALL + R_OUTER_BALL) / tempSecond.size();
+
+                    time = hours + ":" + minutes + ":" + seconds;
+//                        addErrorLogCat("TOTAL", time + "; " + l_total + "; " + r_total);
+                    new Heroku(R_HEEL / tempSecond.size(), R_THUMB / tempSecond.size(), R_INNER_BALL / tempSecond.size(), R_OUTER_BALL / tempSecond.size(), L_HEEL / tempSecond.size(), L_THUMB / tempSecond.size(), L_INNER_BALL / tempSecond.size(), L_OUTER_BALL / tempSecond.size(), time);
+                }catch (Exception e){}
+                // duration -= 1;
+            } catch (Exception ex){
+                addErrorLogCat("SECONDS", ex.getMessage());
+            }
+            R_HEEL = 0;
+            R_THUMB = 0;
+            R_INNER_BALL = 0;
+            R_OUTER_BALL = 0;
+
+            L_HEEL = 0;
+            L_THUMB = 0;
+            L_INNER_BALL = 0;
+            L_OUTER_BALL = 0;
+            tempSecond.clear();
+        }
+       // }
+
+//        if(duration == 0){
+//            duration -= 1;
+//            MainActivity.stopRecording();
+//        }
+    }
+
+    private void showMessage(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public String convertStreamtoString(InputStream is) {
+        String line = "";
+        String data = "";
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                data += line;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        JsonParser jp = new JsonParser();
+        JsonElement je = jp.parse(data);
+
+        String prettyJsonString = gson.toJson(je).toString();
+        prettyJsonString = prettyJsonString.replace("\\u0027", "");
+
+        return prettyJsonString; //je.getAsJsonObject().get("response").toString();
+    }
+
+    private void addErrorLogCat(String tag, String message){
+        Log.e(tag, message);
     }
 
     public void updatePowerView(byte side, int batteryPower) {
@@ -183,4 +377,89 @@ public class ConnectedFragment extends Fragment {
                 });
         }
     };
+
+    class Heroku implements Runnable{
+
+        Thread t;
+        int R_HEEL; int R_THUMB; int R_INNER_BALL; int R_OUTER_BALL; int L_HEEL; int L_THUMB; int L_INNER_BALL; int L_OUTER_BALL; String time;
+        Heroku(int R_HEEL, int R_THUMB, int R_INNER_BALL, int R_OUTER_BALL, int L_HEEL, int L_THUMB, int L_INNER_BALL, int L_OUTER_BALL, String time){
+            this.R_HEEL = R_HEEL; this.R_THUMB = R_THUMB; this.R_INNER_BALL = R_INNER_BALL; this.R_OUTER_BALL = R_OUTER_BALL; this.L_HEEL = L_HEEL; this.L_THUMB = L_THUMB; this.L_INNER_BALL = L_INNER_BALL; this.L_OUTER_BALL = L_OUTER_BALL; this.time = time;
+            t = new Thread(this, "Heroku");
+            t.start();
+        }
+        public void run(){
+            String responseContent = "";
+            URL url = null;
+            try {
+                String WSDL = "https://insoles.herokuapp.com/req";
+                url = new URL(WSDL);
+                addErrorLogCat("URL", url + "");
+            } catch (Exception ex) {
+                addErrorLogCat("URL", ex.getMessage() + "");
+            }
+            JSONObject json = new JSONObject();
+
+            getName = etName.getText().toString();
+            if(getName.equals("")){
+                getName = "SEVENDI";
+            }
+            try {
+                json.accumulate("METHOD", "INSERT");
+                json.accumulate("R_HEEL", this.R_HEEL);
+                json.accumulate("R_THUMB", this.R_THUMB);
+                json.accumulate("R_INNER_BALL", this.R_INNER_BALL);
+                json.accumulate("R_OUTER_BALL", this.R_OUTER_BALL);
+                json.accumulate("L_HEEL", this.L_HEEL);
+                json.accumulate("L_THUMB", this.L_THUMB);
+                json.accumulate("L_INNER_BALL", this.L_INNER_BALL);
+                json.accumulate("L_OUTER_BALL", this.L_OUTER_BALL);
+                json.accumulate("TIME", this.time);
+                json.accumulate("NAME", getName); // TAG_NAME
+            } catch (Exception ex) {
+                addErrorLogCat("JSON Object", ex.getMessage() + "");
+            }
+
+            addErrorLogCat("Current json", json.toString());
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            JsonParser jp = new JsonParser();
+            JsonElement je = jp.parse(json.toString());
+
+            String prettyJsonString = gson.toJson(je);
+            addErrorLogCat("Pretty JSON", prettyJsonString);
+
+            HttpURLConnection conn = null;
+            try {
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                conn.setRequestProperty("Accept", "*/*");
+                conn.setRequestProperty("Cache-Control", "no-cache");
+                conn.setRequestProperty("Accept-Encoding", "gzip, deflate");
+                conn.setDoOutput(true);
+                conn.setDoInput(true);
+
+                addErrorLogCat("Connection", conn + "");
+
+                conn.connect();
+                DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+                os.writeBytes(json.toString());
+                os.flush();
+                os.close();
+
+                int responseCode = conn.getResponseCode();
+                addErrorLogCat("Response code", responseCode + "");
+
+                String responseMessage = conn.getResponseMessage();
+                addErrorLogCat("Response message", responseMessage + "");
+
+                responseContent = convertStreamtoString((InputStream) conn.getContent());
+                addErrorLogCat("Response", responseContent + "");
+
+                conn.disconnect();
+
+            } catch (Exception ex) {
+                addErrorLogCat("Connection error", ex.getMessage() + "");
+            }
+        }
+    }
 }

@@ -128,7 +128,7 @@ public class FootPressureView extends View {
 
         double sum = Math.min(pa + pb + pc + pd, MAX_PRESSURE);
 
-        return (int) (Math.sin(sum / MAX_PRESSURE * Math.PI / 2) * MAX_PRESSURE);
+            return (int) (Math.sin(sum / MAX_PRESSURE * Math.PI / 2) * MAX_PRESSURE);
     }
 
     private static double getPointsDistance(int x1, int y1, int x2, int y2) {
@@ -145,7 +145,6 @@ public class FootPressureView extends View {
             canvas.drawRect(x - pointSize, y - 3, x + pointSize, y + 3, paint);
             canvas.drawRect(x - 3, y - pointSize, x + 3, y + pointSize, paint);
         }
-
     }
 
     private void getPressureData() {

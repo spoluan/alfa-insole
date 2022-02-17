@@ -20,7 +20,8 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
         sourceCompatibility JavaVersion.VERSION_1_8
     }
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.2'
+    sourceSets { main { java.srcDirs = ['src/main/java', 'com.alfaloop.insoleble'] } }
 }
 
 dependencies {
@@ -36,4 +37,5 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.5.1'
     //没有使用特殊Header，可以不加这行
     //版本 23以上
+    implementation 'com.google.code.gson:gson:2.8.5'
 }

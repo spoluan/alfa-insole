@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AlfaInsole</string>
 
-    <string name="app_company_name">AlfaLoop Tech Co.,Ltd</string>
+    <string name="app_company_name">AlfaLoop Co.,Ltd</string>
     <string name="app_company_copyright">Copyright©2018 AlfaLoop</string>
     <string name="title_about_version">　Version 1.0.0</string>
     <string name="title_about_license">　LICENSE</string>
@@ -36,7 +36,6 @@
     <string name="discoveried_1_insole_msg">Insole 1 discovried.</string>
     <string name="start_listening_1_insole_msg">Start listening insole.</string>
     <string name="discoveried_2_insole_msg">Insole 2 discovried.</string>
-    <string name="discoveried_2_insole_fail_msg">Insole 2 discovry fail.</string>
     <string name="start_listening_2_insoles_msg">Start listening insoles.</string>
     <string name="pressure_side_switch_msg">Pressure views switched.</string>
     <string name="select_wrong_device_qty_msg">Please select right qty.</string>
@@ -46,7 +45,6 @@
 
     <string name="title_scan_time">Scan period(s)</string>
     <string name="title_auto_scan">Auto start scan</string>
-    <string name="title_need_titile">Show record title row</string>
     <string name="title_button_save">Save</string>
     <string name="title_save_success">Save success</string>
     <string name="title_save_fail">Save fail</string>
@@ -55,5 +53,4 @@
     <string name="pref_file_key">pref_file_key</string>
     <string name="pref_auto_scan">pref_auto_scan</string>
     <string name="pref_scan_time">pref_scan_time</string>
-    <string name="pref_title_row_needing">pref_title_row_needing</string>
 </resources>
