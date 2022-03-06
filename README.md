@@ -51,7 +51,7 @@ It also support visualize pressure data and record sensors data.
 	<p align="left">
 		<img src="samples/PXL_20220306_052958473.jpg" height="500"/>
 	</p>
-- Retrieve the recorded data from Heroku server
+- Retrieve the recorded data from Heroku server. Download the client code [here](https://github.com/spoluan/smart-insoles-server/blob/modified/tester_client.py)
 	<p align="left">
 		<img src="samples/retrieve_data_from_heroku.png" width="900"/>
 	</p>
