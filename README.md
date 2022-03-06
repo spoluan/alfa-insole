@@ -4,7 +4,7 @@
 AlfaInsole is a mobile application which demonstrate how establish connection with insoles. 
 It also support visualize pressure data and record sensors data.
 
-**Please note this is a modified version of Alfasole V1.0.0. The version has been modified to meet our needs. The original version can be found [here](https://github.com/AlfaLoop/alfainsole).**
+**Please note this is a modified version of Alfasole V1.0.0. The version has been modified to meet our needs. The original version can be found [here](https://github.com/AlfaLoop/alfainsole). **
 
 
 ## Modifications that were made 
