@@ -34,6 +34,7 @@ It also support visualize pressure data and record sensors data.
   
 
 ## Results
+- Download the APK [here](https://github.com/spoluan/alfa-insole/tree/current/app/build/outputs/apk/debug).
 - Detecting nearby 
 	<p align="left">
 		<img src="samples/detecting_nearby.jpg" width="200"/>
