@@ -15,7 +15,7 @@ It also support visualize pressure data and record sensors data.
   
 ## Requirements
   
-- Android deice with 5.0(API 21) or later(Bluetooth LE support)
+- Android device with 5.0(API 21) or later(Bluetooth LE support)
   
 - Android Studio 3.1.4(suggest, or Latest)
   
