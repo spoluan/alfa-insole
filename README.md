@@ -11,16 +11,7 @@ It also support visualize pressure data and record sensors data.
 
 - A few changes and additions have been made to the application interface.
 - We provide a form for each user to provide their unique identification number.
-- We incorporate the system with a server, which sends the data of each user in real-time.
-  
-## Requirements
-  
-- Android deice with 5.0(API 21) or later(Bluetooth LE support)
-  
-- Android Studio 3.1.4(suggest, or Latest)
-  
-- Insole harware [AlfaOne]() and [NikePlus]()
-  
+- We incorporate the system with a server, which sends the data of each user in real-time. 
   
 ## Functions
   
@@ -30,14 +21,7 @@ It also support visualize pressure data and record sensors data.
   
 - Insoles data recording
   
-- Support both AlfaOne and Nike plus insole
-  
-
-## Results
-- Detecting nearby 
-- Before recording
-- While recording
-- Give pressure to the insole
+- Support both AlfaOne and Nike plus insole 
 
 ## Thanks
  
