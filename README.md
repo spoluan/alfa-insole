@@ -1,25 +1,25 @@
 
-# AlfaInsole
-  
-[![License](https://img.shields.io/badge/License%20-Apache%202-337ab7.svg)](https://www.apache.org/licenses/LICENSE-2.0)
-[![MinSdk](https://img.shields.io/badge/API-18%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=18)
-  
-  
 ## Description
-  
-- V1.0.0
-  
+   
 AlfaInsole is a mobile application which demonstrate how establish connection with insoles. 
 It also support visualize pressure data and record sensors data.
-  
-  
-## Development tools
-  
-- Android Studio 4.0
 
-- Android SDK Tools 25.2.5
+**Please note this is a modified version of Alfasole V1.0.0. The version has been modified to meet our needs. The original version can be found [here](https://github.com/AlfaLoop/alfainsole).**
+
+
+## Modifications that were made 
+
+- A few changes and additions have been made to the application interface.
+- We provide a form for each user to provide their unique identification number.
+- We incorporate the system with a server, which sends the data of each user in real-time.
   
-- Insole harware [AlfaOne]()
+## Requirements
+  
+- Android deice with 5.0(API 21) or later(Bluetooth LE support)
+  
+- Android Studio 3.1.4(suggest, or Latest)
+  
+- Insole harware [AlfaOne]() and [NikePlus]()
   
   
 ## Functions
@@ -32,39 +32,15 @@ It also support visualize pressure data and record sensors data.
   
 - Support both AlfaOne and Nike plus insole
   
-  
-## Gatt profile details
-  
-[AlfaOne.Gatt](./document/Alfaone.gatt.md) and [NikePlus.Gatt](./document/NikePlus.gatt.md)
-  
-  
-## Screenshots
-  
-![](./asset/scan_list.jpg)
-![](./asset/visualization.jpg)  
-![](./asset/navigater.jpg)
-![](./asset/setting.jpg)  
-  
-  
+
+## Results
+- Detecting nearby 
+- Before recording
+- While recording
+- Give pressure to the insole
+
 ## Thanks
+ 
+[AlfaLoop](https://github.com/AlfaLoop)
   
-[scwang90/SmartRefreshLayout](https://github.com/scwang90/SmartRefreshLayout)
-  
-  
-License
--------
-
-    Copyright 2018 menaya0506
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-  
+ 
