@@ -15,9 +15,9 @@ It also support visualize pressure data and record sensors data.
   
 ## Development tools
   
-- Pixel 3 XL Android API 30 (Bluetooth LE support)
-  
 - Android Studio 4.0
+
+- Android SDK Tools 25.2.5
   
 - Insole harware [AlfaOne]()
   
