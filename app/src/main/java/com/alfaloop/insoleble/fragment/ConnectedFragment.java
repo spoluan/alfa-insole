@@ -25,12 +25,15 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.DateFormat;
@@ -166,7 +169,8 @@ public class ConnectedFragment extends Fragment {
             if(pressureStr != null)
                 lPressureView.setText(pressureStr);
                 if((pressure[0] != 0 || pressure[1] != 0 || pressure[2] != 0 || pressure[3] != 0) && record == true) {
-                    heroku(pressure, currentDateTimeString, "LEFT");
+                    mqttPublish(pressure, currentDateTimeString, "LEFT");
+//                    heroku(pressure, currentDateTimeString, "LEFT");
 //                    addErrorLogCat("LEFT", pressureStr + "; " + currentDateTimeString);
                 }
             if(data != null)
@@ -178,7 +182,8 @@ public class ConnectedFragment extends Fragment {
                 rPressureView.setText(pressureStr);
             if((pressure[0] != 0 || pressure[1] != 0 || pressure[2] != 0 || pressure[3] != 0) && record == true) {
                 addErrorLogCat("TIME NOW", currentDateTimeString);
-                heroku(pressure, currentDateTimeString, "RIGHT");
+                mqttPublish(pressure, currentDateTimeString, "RIGHT");
+//                heroku(pressure, currentDateTimeString, "RIGHT");
 //                addErrorLogCat("RIGHT", pressureStr + "; " + currentDateTimeString);
             }
             if(data != null)
@@ -198,6 +203,44 @@ public class ConnectedFragment extends Fragment {
 
     private int status_r = 1;
     private int status_l = 1;
+
+
+
+    private void mqttPublish(int[] pressure, String time, String status) {
+        if(MainActivity.client != null) {
+
+            String[] split = time.split(" ")[0].split(":");
+            String hours = split[0];
+            String minutes = split[1];
+            String seconds = split[2];
+            time = hours + ":" + minutes + ":" + seconds;
+
+            if(status.toUpperCase().equals("RIGHT")) {
+                R_HEEL = pressure[0];
+                R_THUMB = pressure[1];
+                R_INNER_BALL = pressure[2];
+                R_OUTER_BALL = pressure[3];
+                status_r = 0;
+                addErrorLogCat("TIME", time + " RIGHT");
+            }
+            if(status.toUpperCase().equals("LEFT")) {
+                L_HEEL = pressure[0];
+                L_THUMB = pressure[1];
+                L_INNER_BALL = pressure[2];
+                L_OUTER_BALL = pressure[3];
+                status_l = 0;
+            }
+
+            if(status_l == 0 || status_r == 0){
+                new MQTTMaster(R_HEEL, R_THUMB, R_INNER_BALL, R_OUTER_BALL, L_HEEL, L_THUMB, L_INNER_BALL, L_OUTER_BALL, time);
+
+                status_r = 1;
+                status_l = 1;
+//                addErrorLogCat("TIME", time + " LEFT");
+//                showMessage("From Heroku: " + getHerokuStatus);
+            }
+        }
+    }
 
     private void heroku(int[] pressure, String time, String status){
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -386,7 +429,65 @@ public class ConnectedFragment extends Fragment {
         }
     };
 
-    class Heroku implements Runnable{
+    class MQTTMaster implements Runnable{
+
+        Thread t;
+        int R_HEEL; int R_THUMB; int R_INNER_BALL; int R_OUTER_BALL; int L_HEEL; int L_THUMB; int L_INNER_BALL; int L_OUTER_BALL; String time;
+        MQTTMaster(int R_HEEL, int R_THUMB, int R_INNER_BALL, int R_OUTER_BALL, int L_HEEL, int L_THUMB, int L_INNER_BALL, int L_OUTER_BALL, String time){
+            this.R_HEEL = R_HEEL; this.R_THUMB = R_THUMB; this.R_INNER_BALL = R_INNER_BALL; this.R_OUTER_BALL = R_OUTER_BALL; this.L_HEEL = L_HEEL; this.L_THUMB = L_THUMB; this.L_INNER_BALL = L_INNER_BALL; this.L_OUTER_BALL = L_OUTER_BALL; this.time = time;
+            t = new Thread(this, "MQTT");
+            t.start();
+        }
+        public void run() {
+            JSONObject json = new JSONObject();
+
+            getName = etName.getText().toString();
+            if(getName.equals("")){
+                getName = "SEVENDI";
+            }
+            try {
+                json.accumulate("R_HEEL", this.R_HEEL);
+                json.accumulate("R_THUMB", this.R_THUMB);
+                json.accumulate("R_INNER_BALL", this.R_INNER_BALL);
+                json.accumulate("R_OUTER_BALL", this.R_OUTER_BALL);
+                json.accumulate("L_HEEL", this.L_HEEL);
+                json.accumulate("L_THUMB", this.L_THUMB);
+                json.accumulate("L_INNER_BALL", this.L_INNER_BALL);
+                json.accumulate("L_OUTER_BALL", this.L_OUTER_BALL);
+                json.accumulate("TIME", this.time);
+                json.accumulate("NAME", getName); // TAG_NAME
+
+            } catch (Exception ex) {
+                addErrorLogCat("JSON Object", ex.getMessage() + "");
+            }
+
+            addErrorLogCat("Current json", json.toString());
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            JsonParser jp = new JsonParser();
+            JsonElement je = jp.parse(json.toString());
+
+            String prettyJsonString = gson.toJson(je);
+            addErrorLogCat("Pretty JSON", prettyJsonString);
+
+            try {
+                String topic = "/sevendi/smartinsoles";
+                String payload = json.toString();
+                byte[] encodedPayload = new byte[0];
+                try {
+                    encodedPayload = payload.getBytes("UTF-8");
+                    MqttMessage message = new MqttMessage(encodedPayload);
+                    message.setRetained(true);
+                    MainActivity.client.publish(topic, message);
+                } catch (UnsupportedEncodingException | MqttException e) {
+                    e.printStackTrace();
+                }
+            } catch (Exception ex) {
+                addErrorLogCat("Connection error", ex.getMessage() + "");
+            }
+        }
+    }
+
+    class Heroku implements Runnable {
 
         Thread t;
         int R_HEEL; int R_THUMB; int R_INNER_BALL; int R_OUTER_BALL; int L_HEEL; int L_THUMB; int L_INNER_BALL; int L_OUTER_BALL; String time;

@@ -1,134 +1,134 @@
 [
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_cover.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-mdpi\\cover.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\menu\\main.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\activity_main.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_main.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\content_main.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_connected_couple_view_fragment.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\connected_couple_view_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\menu_main.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\menu\\main.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_setting.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\activity_setting.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_scaned_fragment.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\scaned_fragment.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_scaned_fragment.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\scaned_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_foreground.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_init_view_fragment.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\init_view_fragment.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_cover.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-mdpi\\cover.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_content_main.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\content_main.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable_side_nav_bar.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\nav_header_main.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_list_item.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\list_item.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\drawable_side_nav_bar.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\drawable\\side_nav_bar.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_setting.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\activity_setting.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_connected_couple_view_fragment.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\connected_couple_view_fragment.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_about.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\activity_about.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_about.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\activity_about.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_list_item.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\list_item.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_nav_header_main.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\nav_header_main.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_main.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\app_bar_main.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main_drawer.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xhdpi\\ic_launcher_foreground.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_init_view_fragment.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\init_view_fragment.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_foreground.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_foreground.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\menu_activity_main_drawer.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\menu\\activity_main_drawer.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
     },
     {
-        "merged": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\res\\merged\\debug\\layout_app_bar_main.xml.flat",
-        "source": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\src\\main\\res\\layout\\app_bar_main.xml"
+        "merged": "D:\\alfa-insole\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "D:\\alfa-insole\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher.xml"
     }
 ]

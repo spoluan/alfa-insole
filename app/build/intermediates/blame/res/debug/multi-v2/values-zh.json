@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
+            "outputFile": "D:\\alfa-insole\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-zh\\values-zh.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\7ilentboy\\.gradle\\caches\\transforms-2\\files-2.1\\c4ca2ee24cfad622a525c285992f2299\\SmartRefreshLayout-1.0.5.1\\res\\values-zh\\values-zh.xml",
+                    "source": "C:\\Users\\se7en\\.gradle\\caches\\transforms-2\\files-2.1\\c4ca2ee24cfad622a525c285992f2299\\SmartRefreshLayout-1.0.5.1\\res\\values-zh\\values-zh.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

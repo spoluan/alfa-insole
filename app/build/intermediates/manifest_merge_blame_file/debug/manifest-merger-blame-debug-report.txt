@@ -6,86 +6,94 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml
+8-->D:\alfa-insole\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="27" />
-9-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml
+9-->D:\alfa-insole\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.BLUETOOTH" />
-11-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:5:5-68
-11-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:5:22-65
+11-->D:\alfa-insole\app\src\main\AndroidManifest.xml:5:5-68
+11-->D:\alfa-insole\app\src\main\AndroidManifest.xml:5:22-65
 12    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
-12-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:6:5-74
-12-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:6:22-71
+12-->D:\alfa-insole\app\src\main\AndroidManifest.xml:6:5-74
+12-->D:\alfa-insole\app\src\main\AndroidManifest.xml:6:22-71
 13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-13-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:7:5-79
-13-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:7:22-76
+13-->D:\alfa-insole\app\src\main\AndroidManifest.xml:7:5-79
+13-->D:\alfa-insole\app\src\main\AndroidManifest.xml:7:22-76
 14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-14-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:8:5-81
-14-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:8:22-78
+14-->D:\alfa-insole\app\src\main\AndroidManifest.xml:8:5-81
+14-->D:\alfa-insole\app\src\main\AndroidManifest.xml:8:22-78
 15    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-15-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:10:5-75
-15-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:10:22-72
+15-->D:\alfa-insole\app\src\main\AndroidManifest.xml:10:5-75
+15-->D:\alfa-insole\app\src\main\AndroidManifest.xml:10:22-72
 16    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-16-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:11:5-80
-16-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:11:22-77
+16-->D:\alfa-insole\app\src\main\AndroidManifest.xml:11:5-80
+16-->D:\alfa-insole\app\src\main\AndroidManifest.xml:11:22-77
 17    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-17-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:13:5-79
-17-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:13:22-76
+17-->D:\alfa-insole\app\src\main\AndroidManifest.xml:13:5-79
+17-->D:\alfa-insole\app\src\main\AndroidManifest.xml:13:22-76
 18    <uses-permission android:name="android.permission.INTERNET" />
-18-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:14:5-67
-18-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:14:22-64
-19
-20    <uses-feature android:name="android.hardware.location.gps" />
-20-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:16:5-66
-20-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:16:19-63
-21    <uses-feature
-21-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:17:5-19:35
-22        android:name="android.hardware.bluetooth_le"
-22-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:18:9-53
-23        android:required="true" />
-23-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:19:9-32
-24
-25    <application
-25-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:21:5-41:19
-26        android:allowBackup="true"
-26-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:22:9-35
-27        android:debuggable="true"
-28        android:icon="@mipmap/ic_launcher"
-28-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:23:9-43
-29        android:label="@string/app_name"
-29-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:24:9-41
-30        android:roundIcon="@mipmap/ic_launcher_round"
-30-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:25:9-54
-31        android:supportsRtl="true"
-31-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:26:9-35
-32        android:theme="@style/AppTheme" >
-32-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:27:9-40
-33        <activity android:name="com.alfaloop.insoleble.MainActivity" >
-33-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:28:9-34:20
-33-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:28:19-47
-34            <intent-filter>
-34-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:29:13-33:29
-35                <action android:name="android.intent.action.MAIN" />
-35-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:30:17-69
-35-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:30:25-66
-36
-37                <category android:name="android.intent.category.LAUNCHER" />
-37-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:32:17-77
-37-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:32:27-74
-38            </intent-filter>
-39        </activity>
-40        <activity
-40-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:35:9-37:72
-41            android:name="com.alfaloop.insoleble.SettingsActivity"
-41-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:36:13-45
-42            android:label="@string/title_activity_settings" />
-42-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:37:13-60
-43        <activity
-43-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:38:9-40:69
-44            android:name="com.alfaloop.insoleble.AboutActivity"
-44-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:39:13-42
-45            android:label="@string/title_activity_about" />
-45-->C:\Users\7ilentboy\AndroidStudioProjects\alfainsole-1.0.0\app\src\main\AndroidManifest.xml:40:13-57
-46    </application>
+18-->D:\alfa-insole\app\src\main\AndroidManifest.xml:14:5-67
+18-->D:\alfa-insole\app\src\main\AndroidManifest.xml:14:22-64
+19    <uses-permission android:name="android.permission.WAKE_LOCK" />
+19-->D:\alfa-insole\app\src\main\AndroidManifest.xml:16:5-68
+19-->D:\alfa-insole\app\src\main\AndroidManifest.xml:16:22-65
+20
+21    <uses-feature android:name="android.hardware.location.gps" />
+21-->D:\alfa-insole\app\src\main\AndroidManifest.xml:18:5-66
+21-->D:\alfa-insole\app\src\main\AndroidManifest.xml:18:19-63
+22    <uses-feature
+22-->D:\alfa-insole\app\src\main\AndroidManifest.xml:19:5-21:35
+23        android:name="android.hardware.bluetooth_le"
+23-->D:\alfa-insole\app\src\main\AndroidManifest.xml:20:9-53
+24        android:required="true" />
+24-->D:\alfa-insole\app\src\main\AndroidManifest.xml:21:9-32
+25
+26    <application
+26-->D:\alfa-insole\app\src\main\AndroidManifest.xml:23:5-45:19
+27        android:allowBackup="true"
+27-->D:\alfa-insole\app\src\main\AndroidManifest.xml:24:9-35
+28        android:debuggable="true"
+29        android:icon="@mipmap/ic_launcher"
+29-->D:\alfa-insole\app\src\main\AndroidManifest.xml:25:9-43
+30        android:label="@string/app_name"
+30-->D:\alfa-insole\app\src\main\AndroidManifest.xml:26:9-41
+31        android:roundIcon="@mipmap/ic_launcher_round"
+31-->D:\alfa-insole\app\src\main\AndroidManifest.xml:27:9-54
+32        android:supportsRtl="true"
+32-->D:\alfa-insole\app\src\main\AndroidManifest.xml:28:9-35
+33        android:theme="@style/AppTheme" >
+33-->D:\alfa-insole\app\src\main\AndroidManifest.xml:29:9-40
+34        <activity android:name="com.alfaloop.insoleble.MainActivity" >
+34-->D:\alfa-insole\app\src\main\AndroidManifest.xml:30:9-36:20
+34-->D:\alfa-insole\app\src\main\AndroidManifest.xml:30:19-47
+35            <intent-filter>
+35-->D:\alfa-insole\app\src\main\AndroidManifest.xml:31:13-35:29
+36                <action android:name="android.intent.action.MAIN" />
+36-->D:\alfa-insole\app\src\main\AndroidManifest.xml:32:17-69
+36-->D:\alfa-insole\app\src\main\AndroidManifest.xml:32:25-66
+37
+38                <category android:name="android.intent.category.LAUNCHER" />
+38-->D:\alfa-insole\app\src\main\AndroidManifest.xml:34:17-77
+38-->D:\alfa-insole\app\src\main\AndroidManifest.xml:34:27-74
+39            </intent-filter>
+40        </activity>
+41        <activity
+41-->D:\alfa-insole\app\src\main\AndroidManifest.xml:37:9-39:72
+42            android:name="com.alfaloop.insoleble.SettingsActivity"
+42-->D:\alfa-insole\app\src\main\AndroidManifest.xml:38:13-45
+43            android:label="@string/title_activity_settings" />
+43-->D:\alfa-insole\app\src\main\AndroidManifest.xml:39:13-60
+44        <activity
+44-->D:\alfa-insole\app\src\main\AndroidManifest.xml:40:9-42:69
+45            android:name="com.alfaloop.insoleble.AboutActivity"
+45-->D:\alfa-insole\app\src\main\AndroidManifest.xml:41:13-42
+46            android:label="@string/title_activity_about" />
+46-->D:\alfa-insole\app\src\main\AndroidManifest.xml:42:13-57
 47
-48</manifest>
+48        <service android:name="org.eclipse.paho.android.service.MqttService" >
+48-->D:\alfa-insole\app\src\main\AndroidManifest.xml:43:9-44:19
+48-->D:\alfa-insole\app\src\main\AndroidManifest.xml:43:18-77
+49        </service>
+50    </application>
+51
+52</manifest>

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\7ilentboy\\AndroidStudioProjects\\alfainsole-1.0.0\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
+            "outputFile": "D:\\alfa-insole\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v17\\values-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\7ilentboy\\.gradle\\caches\\transforms-2\\files-2.1\\9bab41cd1cac7e96d8cf039a3df31825\\appcompat-v7-27.1.1\\res\\values-v17\\values-v17.xml",
+                    "source": "C:\\Users\\se7en\\.gradle\\caches\\transforms-2\\files-2.1\\9bab41cd1cac7e96d8cf039a3df31825\\appcompat-v7-27.1.1\\res\\values-v17\\values-v17.xml",
                     "from": {
                         "startLines": "2,5,9,12,15,18,22,26,29,32,35,39,42,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

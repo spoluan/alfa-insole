@@ -41,10 +41,25 @@ import com.alfaloop.insoleble.fragment.InitViewFragment;
 import com.alfaloop.insoleble.fragment.ScanFragment;
 import com.alfaloop.insoleble.utils.FileUtils;
 import com.alfaloop.insoleble.utils.PermissionManager;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
+// modified
+import org.eclipse.paho.android.service.MqttAndroidClient;
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,6 +98,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SharedPreferences sharedPref = null;
     private SharedPreferences.Editor editor = null;
 
+    public static MqttAndroidClient client;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +116,60 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         loadPreferencesAutoScanSet();
         ConnectedFragment.record = false;
 
+        // modified
+        initMQTT();
+    }
+
+    // modified
+    public void initMQTT() {
+        String clientId = MqttClient.generateClientId();
+        client = new MqttAndroidClient(this.getApplicationContext(), "tcp://test.mosquitto.org:1883",
+                        clientId);
+        try {
+//            MqttConnectOptions options = new MqttConnectOptions();
+//            options.setUserName("zcom");
+//            options.setPassword("zcom".toCharArray());
+
+            IMqttToken token = client.connect();
+            token.setActionCallback(new IMqttActionListener() {
+                @Override
+                public void onSuccess(IMqttToken asyncActionToken) {
+                    // We are connected
+                    Log.d(TAG, "onSuccess");
+                    Toast.makeText(MainActivity.this, "Success connected to mqtt server!", Toast.LENGTH_LONG).show();
+
+//                    int counter = 0;
+//                    while(true) {
+//                        try {
+//                            String topic = "/sevendi/smartinsoles";
+//                            String payload = "test " + counter;
+//                            byte[] encodedPayload = new byte[0];
+//                            try {
+//                                encodedPayload = payload.getBytes("UTF-8");
+//                                MqttMessage message = new MqttMessage(encodedPayload);
+//                                message.setRetained(true);
+//                                MainActivity.client.publish(topic, message);
+//                            } catch (UnsupportedEncodingException | MqttException e) {
+//                                e.printStackTrace();
+//                            }
+//                        } catch (Exception ex) {
+//                        }
+//                        counter += 1;
+//                    }
+
+                }
+
+                @Override
+                public void onFailure(IMqttToken asyncActionToken, Throwable exception) {
+                    // Something went wrong e.g. connection timeout or firewall problems
+                    Log.d(TAG, "onFailure");
+                    client = null;
+                    Toast.makeText(MainActivity.this, "Failed connected to mqtt server!", Toast.LENGTH_LONG).show();
+                }
+            });
+        } catch (MqttException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
