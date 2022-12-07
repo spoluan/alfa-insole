@@ -127,8 +127,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         clientId);
         try {
 //            MqttConnectOptions options = new MqttConnectOptions();
-//            options.setUserName("zcom");
-//            options.setPassword("zcom".toCharArray());
+//            options.setUserName("");
+//            options.setPassword("".toCharArray());
 
             IMqttToken token = client.connect();
             token.setActionCallback(new IMqttActionListener() {
